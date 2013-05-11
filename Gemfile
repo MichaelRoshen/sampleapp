@@ -9,6 +9,8 @@ gem 'bcrypt-ruby', '3.0.1'
 group :development,:test do 
   gem 'sqlite3'
   gem 'rspec-rails', '2.11.0'
+  gem 'database_cleaner'
+  gem 'capybara','1.1.2'
 end
 
 # Gems used only for assets and not required
@@ -27,7 +29,6 @@ end
 gem 'jquery-rails'
 
 group :test do 
-  gem 'capybara','1.1.2'
   gem 'factory_girl_rails','4.1.0'
 end
 
