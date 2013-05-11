@@ -137,6 +137,14 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
 
 }
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
 
 
 
