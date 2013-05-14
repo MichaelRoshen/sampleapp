@@ -10,6 +10,7 @@ group :development,:test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.11.0'
   gem 'database_cleaner'
+  gem 'launchy'
   gem 'capybara','1.1.2'
 end
 

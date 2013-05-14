@@ -57,6 +57,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  width: 900px;
 }
 
 footer a {
@@ -122,11 +123,6 @@ aside {
   margin-right: 10px;
 }
 
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 /* forms */
 input, textarea, select, .uneditable-input {

@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= reuqire bootstrp.min.js
 //= require_tree .

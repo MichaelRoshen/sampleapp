@@ -15,7 +15,15 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate)}
+  it { should respond_to(:remember_token) }
   it { should be_valid }
+
+  describe "remember token" do
+    before { @user.save }
+    #注意its的用法，用来测试指定对象的属性，等同于
+    #it { @user.remember_token.should_not be_blank }
+    its(:remember_token) { should_not be_blank }
+  end
 
   describe "when name is not present" do
     before { @user.name = "" }
