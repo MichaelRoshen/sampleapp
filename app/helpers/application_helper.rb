@@ -9,13 +9,5 @@ module ApplicationHelper
     end
   end
 
-  def sign_in(user)
-    visit signin_path
-    fill_with "Email", with: user.email
-    fill_with "Password", with: user.password
-    click_button "Sing In"
-    #sign in when not using Capybara as well
-    cookies[:remember_token] = user.remember_token
-  end
 
 end
