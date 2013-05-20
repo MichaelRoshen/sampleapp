@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :edit, :update, :show]
   before_filter :correct_user, only: [:edit, :update, :show]
+  before_filter :admin_user, only: [:destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 8)
@@ -37,6 +38,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed"
+    redirect_to users_path
+  end
+
   private
   
   def signed_in_user
@@ -51,5 +58,9 @@ class UsersController < ApplicationController
     #这里统一返回@user变量，show, edit ,update中的@user = User.find(params[:id])就可以去掉了
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end

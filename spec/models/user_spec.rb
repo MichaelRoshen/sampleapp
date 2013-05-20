@@ -4,12 +4,13 @@ describe User do
 
   before do
     @user = User.new(name: "Example User", 
-  		     email: "user@example.com",
-		     password: "foobar",
-		     password_confirmation: "foobar")
+      email: "user@example.com",
+      password: "foobar",
+      password_confirmation: "foobar")
   end
   subject { @user }
   it { should respond_to(:name) }
+  it { should respond_to(:admin) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
@@ -18,10 +19,15 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should be_valid }
 
+  describe "with admin attribute set to 'true'" do
+    #ä½¿ç”¨ toggle! æ–¹æ³•æŠŠ admin å±æ€§çš„å€¼ä» false è½¬å˜æˆ true
+    before { @user.toggle!(:admin)}
+    #be_admin å¯¹åº”admin? æ–¹æ³•,railsè‡ªå·±ç”Ÿæˆ
+    it { should be_admin }
+  end
+
   describe "remember token" do
     before { @user.save }
-    #×¢ÒâitsµÄÓÃ·¨£¬ÓÃÀ´²âÊÔÖ¸¶¨¶ÔÏóµÄÊôĞÔ£¬µÈÍ¬ÓÚ
-    #it { @user.remember_token.should_not be_blank }
     its(:remember_token) { should_not be_blank }
   end
 
@@ -45,7 +51,7 @@ describe User do
       address = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_bar.com foo@bar+baz.com]
       address.each do |invalid_address|
         @user.email = invalid_address
-	@user.should_not be_valid
+        @user.should_not be_valid
       end
     end
   end
@@ -55,7 +61,7 @@ describe User do
       address = %w[user@foo.COM A_US-ER@f.b.org best.lst@foo.jp a+b@baz.cn]
       address.each do |valid_address|
         @user.email = valid_address
-	@user.should be_valid
+        @user.should be_valid
       end
     end
   end
