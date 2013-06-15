@@ -153,8 +153,10 @@ input, textarea, select, .uneditable-input {
 }
 
 /* microposts */
-.microposts {
+ol {
 list-style: none;
+}
+.microposts {
 margin: 10px 0 0 0;
 li {
 padding: 15px 0;
