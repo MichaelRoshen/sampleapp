@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   end
   
   def show
+    #访问show的时候，会先调用过滤器correct_user，返回@user
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def edit
@@ -56,12 +58,6 @@ class UsersController < ApplicationController
 
   private
   
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_path, notice: "Please Sign in"
-    end
-  end
 
   def correct_user
     #before_filter :correct_user在访问show, edit ,update 控制器的时候会调用correct_user

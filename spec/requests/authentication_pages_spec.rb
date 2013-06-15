@@ -76,6 +76,21 @@ describe "AuthenticationPages" do
           end
         end
       end
+
+      describe "in the microposts controller" do
+        #没有登录的用户查看微博时，重定向到登录页面
+        describe "submmit to the create action" do
+          before { post microposts_path }
+          specify { response.should redirect_to(signin_path)}
+        end
+
+        describe "submmit to the destory action" do
+          let(:m1) { FactoryGirl.create(:micropost) }
+          before { delete micropost_path(m1) }
+          specify { response.should redirect_to(signin_path)}
+        end
+        
+      end
     end
 
     describe "as a wrong user" do

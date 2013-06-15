@@ -93,12 +93,10 @@ footer ul li {
 
 }
 
-$grayMediumLight: #eaeaea;
-
 aside {
    section {
    padding: 10px 0;
-   border-top: 1px solid $grayMediumLight;
+   border-top: 1px solid #eaeaea;
    }
 &:first-child {
       border: 0;
@@ -127,7 +125,6 @@ aside {
 /* forms */
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   padding: 10px;
   height: auto !important;
   margin-bottom: 15px;
@@ -154,6 +151,33 @@ input, textarea, select, .uneditable-input {
     }
   }
 }
+
+/* microposts */
+.microposts {
+list-style: none;
+margin: 10px 0 0 0;
+li {
+padding: 15px 0;
+border-top: 1px solid red;
+}
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: blue;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
 
 
 
