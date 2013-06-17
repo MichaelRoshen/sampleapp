@@ -18,6 +18,7 @@ describe User do
   it { should respond_to(:authenticate)}
   it { should respond_to(:remember_token) }
   it { should respond_to(:microposts) }
+  it { should respond_to(:relationships) }
   it { should respond_to(:feed) }
   it { should be_valid }
 
